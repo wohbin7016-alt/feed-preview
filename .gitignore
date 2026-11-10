@@ -1,0 +1,6 @@
+.DS_Store
+._*
+.openai/
+.verification/
+node_modules/
+*.log
