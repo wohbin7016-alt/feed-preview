@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="사진을 놓고, 순서를 바꾸고. 올리기 전 나만의 피드를 미리 보는 작은 공간.">
+  <title>모아 — 피드 미리보기</title>
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="apple-touch-icon" href="./icons/icon-180.png">
+  <meta name="apple-mobile-web-app-title" content="모아">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="./" aria-label="모아 홈"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>모아<span class="brand-caption">FEED PREVIEW</span></a>
+    <span class="local-tag"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="8" width="12" height="9" rx="2"/><path d="M7 8V5a3 3 0 0 1 6 0v3"/></svg>내 브라우저에만</span>
+  </header>
+
+  <main class="workspace">
+    <aside class="studio-panel">
+      <div class="intro"><span class="eyebrow">A LITTLE SPACE TO ARRANGE</span><h1>올리기 전에,<br>피드부터.</h1><p>사진을 모아 놓고, 마음에 드는 흐름을 찾아요.<br class="desktop-only"> 올리는 건 그다음에.</p></div>
+      <div class="add-section">
+        <button type="button" class="button button-primary" id="add-photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>사진 추가하기</button>
+        <input type="file" id="photo-input" accept="image/*" multiple hidden>
+        <p class="upload-hint">여러 장을 한 번에 · 최대 100장</p>
+      </div>
+      <section class="settings-section" aria-labelledby="ratio-label"><div class="section-label" id="ratio-label">미리보기 비율</div><div class="segmented" role="group" aria-labelledby="ratio-label"><button id="ratio-portrait" type="button" data-ratio="portrait" aria-pressed="true"><span class="ratio-icon portrait" aria-hidden="true"></span>3:4 세로</button><button id="ratio-square" type="button" data-ratio="square" aria-pressed="false"><span class="ratio-icon square" aria-hidden="true"></span>1:1 정사각</button></div></section>
+      <div class="arrange-note"><span class="note-number">01 — 02 — 03</span><p>가장 왼쪽 위가 최신 피드예요.<br>새 사진은 선택한 순서대로 맨 앞에 놓여요.</p></div>
+      <details class="help"><summary>이렇게 사용해요 <span aria-hidden="true">+</span></summary><div><p>사진을 선택하고 아래 버튼으로 옮겨보세요. PC에서는 드래그, 휴대폰에서는 꾹 누른 뒤 움직여도 돼요.</p><p>키보드로 사진을 선택한 뒤 방향키를 누르면 순서가 바뀌어요. Delete 키로 삭제할 수 있어요.</p><p>사진은 이 기기의 현재 브라우저에만 저장돼요. 다른 기기로 동기화되지 않으며, 사이트 데이터를 지우면 사라져요.</p><p>인스타그램 로그인이나 자동 게시 없이 미리보기만 제공해요. 실제 인스타그램 화면과 잘리는 위치는 다를 수 있어요.</p></div></details>
+      <div class="storage-status" id="storage-status" role="status"><span class="status-dot" aria-hidden="true"></span><span id="storage-text">저장한 피드를 불러오는 중</span></div>
+    </aside>
+
+    <section class="preview-section" aria-labelledby="preview-heading">
+      <div class="preview-topline"><div><span class="eyebrow">YOUR GALLERY</span><h2 id="preview-heading">나의 피드 <span id="photo-count">0</span></h2></div><span class="preview-tag">PREVIEW ONLY</span></div>
+      <div class="preview-surface" id="drop-zone">
+        <div class="grid-heading"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h5v5H3zM12 3h5v5h-5zM3 12h5v5H3zM12 12h5v5h-5z"/></svg><span>FEED GRID</span><span class="grid-ratio" id="grid-ratio">3:4</span></div>
+        <div class="photo-grid" id="photo-grid" aria-label="사진 미리보기, 사진을 선택하면 순서를 바꿀 수 있어요"></div>
+        <div class="empty-state" id="empty-state"><div class="empty-art" aria-hidden="true"><span class="empty-tile one"></span><span class="empty-tile two"></span><span class="empty-tile three"></span><svg viewBox="0 0 32 32"><rect x="4" y="5" width="24" height="22" rx="3"/><circle cx="12" cy="12" r="2"/><path d="m5 24 7-7 5 5 4-4 6 6"/></svg></div><h3>첫 사진을 놓아볼까요?</h3><p>함께 놓았을 때 더 잘 보이는 분위기.<br>사진 몇 장으로 시작해 보세요.</p><button type="button" class="button button-outline" id="empty-add">사진 골라보기 <span aria-hidden="true">↗</span></button><span class="drop-hint">또는 여기에 사진을 끌어 놓으세요</span></div>
+        <div class="drop-overlay" id="drop-overlay" aria-hidden="true"><span>여기에 사진 놓기</span></div>
+      </div>
+      <p class="preview-caption"><span>사진 순서와 분위기만, 가볍게.</span><span id="grid-instruction">선택 · 드래그로 순서 변경</span></p>
+    </section>
+  </main>
+
+  <section class="selection-bar" id="selection-bar" aria-label="선택한 사진 편집" hidden><div class="selection-info"><span class="selection-index" id="selection-index">1</span><span class="selection-name" id="selection-name">사진 선택</span><button type="button" class="icon-button clear-selection" id="clear-selection" aria-label="사진 선택 해제">×</button></div><div class="selection-actions"><button type="button" id="move-before"><span aria-hidden="true">←</span> 앞으로</button><button type="button" id="move-after">뒤로 <span aria-hidden="true">→</span></button><span class="toolbar-divider"></span><button type="button" id="delete-photo" class="delete-button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M7 5V3h6v2M5 5l1 12h8l1-12M8 8v6M12 8v6"/></svg>삭제</button></div></section>
+  <div class="notice-stack"><div class="undo-notice" id="undo-notice" hidden><span>사진 한 장을 삭제했어요.</span><button type="button" id="undo-delete">되돌리기</button><button type="button" id="dismiss-undo" aria-label="삭제 알림 닫기">×</button></div><div class="toast" id="toast" role="status" hidden></div></div>
+  <div class="import-progress" id="import-progress" role="status" hidden><span class="spinner" aria-hidden="true"></span><span id="import-text">사진 준비 중</span></div>
+  <p class="sr-only" id="live-announcement" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="noscript">피드 미리보기를 사용하려면 JavaScript를 켜 주세요.</p></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
